@@ -1,0 +1,27 @@
+{
+  "development": {
+    "username": "root",
+    "password": "password",
+    "database": "devcode_db",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": 3306,
+    "seederStorage": "sequelize"
+  },
+  "test": {
+    "username": "root",
+    "password": "password",
+    "database": "devcode_db",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": 3306
+  },
+  "production": {
+    "username": "root",
+    "password": "password",
+    "database": "devcode_db",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": 3306
+  }
+}
