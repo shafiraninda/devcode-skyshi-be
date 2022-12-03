@@ -1,11 +1,11 @@
-const ActivityController = require("../controller/activityController");
+const TodoController = require("../controller/todoController");
 const express = require("express");
 const ROUTER = express.Router();
 
-ROUTER.get("/", ActivityController.getAllActivity);
-ROUTER.post("/", ActivityController.createActivity);
-ROUTER.get("/:id", ActivityController.getActivityById);
-ROUTER.patch("/:id", ActivityController.editActivity);
-ROUTER.delete("/:id", ActivityController.deleteActivity);
+ROUTER.get("/", TodoController.getAllTodo);
+ROUTER.post("/", TodoController.createTodo);
+ROUTER.get("/:id", TodoController.getTodoById);
+ROUTER.patch("/:id", TodoController.editTodo);
+ROUTER.delete("/:id", TodoController.deleteTodo);
 
 module.exports = ROUTER;
