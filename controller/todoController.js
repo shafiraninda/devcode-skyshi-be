@@ -6,13 +6,16 @@ const errorHandler = require('../utils/errorHandler');
 // GET ALL TODO ITEMS
 async function getAllTodo(req, res, next){
     try {
-        const todoList = await Todo.findAll()
+        const todoList = await Todo.findAll({
+            attributes: {exclude: ['activityId']}
+        })
         res.status(200).json({
             status: "Success",
             message: "Success",
             data: todoList
         })
     } catch (error) {
+        console.log(error)
         next(error)
     }
 }
@@ -21,7 +24,7 @@ async function getAllTodo(req, res, next){
 async function getTodoById(req, res, next){
     const id = req.params.id
     try {
-        const existTodo = await Todo.findByPk(id);
+        const existTodo = await Todo.findByPk(id, { attributes: { exclude: ['activityId']}});
         if(!existTodo){
             throw new errorHandler(404, "To-do Not Found!")
         }
@@ -39,7 +42,7 @@ async function getTodoById(req, res, next){
 async function createTodo(req, res, next){
     const { activity_group_id, title } = req.body
     try {
-        const existActivity = await Activity.findByPk(activity_group_id)
+        const existActivity = await Activity.findByPk(activity_group_id, { attributes: { exclude: ['activityId']}})
         if(!existActivity){
             throw new errorHandler(404, `Group Activity with ID ${activity_group_id} Not Found`)
         }
@@ -66,7 +69,7 @@ async function editTodo(req, res, next){
     const id = req.params.id
     const { title } = req.body
     try {
-        const existTodo = await Todo.findByPk(id)
+        const existTodo = await Todo.findByPk(id, { attributes: { exclude: ['activityId']}})
         if(!existTodo){
             throw new errorHandler(404, "To-do Not Found!")
         }
@@ -76,7 +79,7 @@ async function editTodo(req, res, next){
         if(!updateTodo){
             throw new errorHandler(400, "Failed to update To-do")
         }
-        const updatedTodo = await Todo.findByPk(existTodo.id)
+        const updatedTodo = await Todo.findByPk(existTodo.id, { attributes: { exclude: ['activityId']}})
         res.status(201).json({
             status: "Success",
             message: "Success",
@@ -94,7 +97,7 @@ async function deleteTodo(req, res, next){
         await Todo.destroy({
             where: { id: id}
         })
-        const deletedTodo = await Todo.findByPk(id)
+        const deletedTodo = await Todo.findByPk(id, { attributes: { exclude: ['activityId']}})
         if(deletedTodo){
             throw new errorHandler(400, "Failed to Delete To-do")
         }
