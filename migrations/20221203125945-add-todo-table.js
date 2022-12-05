@@ -9,7 +9,7 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-     await queryInterface.createTable('todo', {
+     await queryInterface.createTable('todos', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -19,7 +19,7 @@ module.exports = {
       activity_group_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'activity',
+          model: 'activities',
           key: 'id'
         },
         allowNull: false
@@ -52,7 +52,6 @@ module.exports = {
       },
     },
     {
-      freezeTableName: true,
       createdAt: "created_at",
       updatedAt: "updated_at",
       deletedAt: "deleted_at",
@@ -69,6 +68,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('todo');
+    await queryInterface.dropTable('todos');
   }
 };

@@ -9,7 +9,7 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable('activity', {
+    await queryInterface.createTable('activities', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -38,7 +38,6 @@ module.exports = {
       }
     },
     {
-      freezeTableName: true,
       createdAt: "created_at",
       updatedAt: "updated_at",
       deletedAt: "deleted_at",
@@ -55,6 +54,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-     return await queryInterface.dropTable('activity');
+     return await queryInterface.dropTable('activities');
   }
 };

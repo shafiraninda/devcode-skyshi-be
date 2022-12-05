@@ -11,7 +11,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('activity', [
+    await queryInterface.bulkInsert('activities', [
       {
         "email":"fhendriks0@abc.net.au",
         "title":"Marketing Assistant",
@@ -44,7 +44,7 @@ module.exports = {
       {"email":"jbremleye@blinklist.com","title":"Safety Technician III", "created_at": new Date(),"updated_at": new Date() }
       ], {});
 
-      await queryInterface.bulkInsert('todo', [
+      await queryInterface.bulkInsert('todos', [
         {"title":"Other Boleyn Girl, The","activity_group_id":7, "created_at": new Date(),"updated_at": new Date()},
         {"title":"Wipers Times, The","activity_group_id":1, "created_at": new Date(),"updated_at": new Date()},
         {"title":"I Confess","activity_group_id":7, "created_at": new Date(),"updated_at": new Date()},
@@ -155,7 +155,7 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('activity', null, {});
-    await queryInterface.bulkDelete('todo', null, {});
+    await queryInterface.bulkDelete('activities', null, {});
+    await queryInterface.bulkDelete('todos', null, {});
   }
 };
